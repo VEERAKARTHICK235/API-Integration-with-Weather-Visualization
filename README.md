@@ -22,3 +22,7 @@ This Python project fetches **real-time weather data** from the **OpenWeatherMap
 
 🌬️ A line graph of wind speed variations.
 
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/VEERAKARTHICK235/API-Integration-with-Weather-Visualization.git
