@@ -5,9 +5,18 @@ import tkinter as tk
 from tkinter import ttk
 from sklearn.linear_model import LinearRegression
 import numpy as np
+from dotenv import load_dotenv
+import os
 
-API_KEY = 'replace-your-api-key'    # Replace with your API key
+
+load_dotenv()
+
+API_KEY = os.getenv("OPENWEATHER_API_KEY")
 BASE_URL = "https://api.openweathermap.org/data/2.5/forecast"
+
+if not API_KEY:
+    raise ValueError("API key not found! Please add OPENWEATHER_API_KEY in .env file.")
+
 
 def fetch_weather_data(city):
     url = f"{BASE_URL}?q={city}&appid={API_KEY}&units=metric"
@@ -27,7 +36,7 @@ def parse_data(data):
     return times, temps, humidities, wind_speeds, conditions
 
 def plot_dashboard(times, temps, humidities, wind_speeds, conditions, city):
-    plt.style.use('default')  # Light theme
+    plt.style.use('default')  
     plt.figure(figsize=(14, 12))
 
     # Temperature
